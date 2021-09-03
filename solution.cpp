@@ -22,19 +22,23 @@ int run_test(){
     }
 
     int ans = 0;
-    vector<int> dp(26);
+    vector<pair<string, int>> dp(26);
+    for(auto &x : dp){
+        x = {"", 0};
+    }
 
     for(int i = 0; i < n; i++){
         int frontCh = v[i][0] - 'a';
         int backCh = v[i].back() - 'a';
-        dp[backCh] = max(dp[backCh], dp[frontCh] + (int)v[i].length());
+        if(dp[backCh].second < dp[frontCh].second + (int)v[i].length()){
+            dp[backCh].second = dp[frontCh].second + (int)v[i].length();
+            dp[backCh].first = dp[frontCh].first + v[i];
+        }
+        if(dp[backCh].first[0] == dp[backCh].first.back()){
+            ans = max(ans, dp[backCh].second);
+        }
+
     }
-
-
-    for(int i = 0; i < 26; i++){
-        ans = max(ans, dp[i]);
-    }
-
 
     cout << ans << endl;
 	return 0;
