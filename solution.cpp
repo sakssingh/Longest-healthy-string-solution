@@ -22,6 +22,9 @@ int run_test(){
     }
 
     int ans = 0;
+
+    vector<int> dp(26, 0);
+
     vector<pair<string, int>> dp(26);
     for(auto &x : dp){
         x = {"", 0};
@@ -30,6 +33,10 @@ int run_test(){
     for(int i = 0; i < n; i++){
         int frontCh = v[i][0] - 'a';
         int backCh = v[i].back() - 'a';
+
+        dp[backCh] = max(dp[backCh], dp[frontCh] + v[i].length());
+    }
+
         if(dp[backCh].second < dp[frontCh].second + (int)v[i].length()){
             dp[backCh].second = dp[frontCh].second + (int)v[i].length();
             dp[backCh].first = dp[frontCh].first + v[i];
@@ -37,6 +44,7 @@ int run_test(){
         if(dp[backCh].first[0] == dp[backCh].first.back()){
             ans = max(ans, dp[backCh].second);
         }
+
 
     }
 
