@@ -22,7 +22,7 @@ int run_test(){
     }
 
     int ans = 0;
-    vector<int> dp(26);
+    vector<int> dp(26, 0);
 
     for(int i = 0; i < n; i++){
         int frontCh = v[i][0] - 'a';
