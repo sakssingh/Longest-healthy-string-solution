@@ -27,7 +27,7 @@ int run_test(){
     for(int i = 0; i < n; i++){
         int frontCh = v[i][0] - 'a';
         int backCh = v[i].back() - 'a';
-        dp[backCh] = max(dp[backCh], dp[frontCh] + (int)v[i].length());
+        dp[backCh] = max(dp[backCh], dp[frontCh] + v[i].length());
     }
 
 
