@@ -1,11 +1,5 @@
 #include<bits/stdc++.h>
 
-#define pb push_back
-#define endl '\n'
-#define ff first
-#define ss second
-#define ALL(v) v.begin(), v.end()
-
 using namespace std;
 
 typedef long long ll;
